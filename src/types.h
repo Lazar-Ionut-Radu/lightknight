@@ -21,7 +21,7 @@ typedef struct {
 } piece_t;
 
 typedef struct {
-    piece_t board[10][12];
+    piece_t board[120]; /* Explained in board.h */
     color_t turn;
     int castleK, castleQ; /* Castling rights for white. */
     int castlek, castleq; /* Castling rights for black. */
@@ -29,24 +29,12 @@ typedef struct {
     int num_pieces[2][6]; /* [COLOR][PIECE TYPE] */
 } position_t;
 
-/* Returns TRUE if the square is on the table. */
-int is_on_table(int square);
-
 typedef struct {
     int fromSquare; /* Origin square. */
     int toSquare; /* Destination square. */
     piece_t capturedPiece;
     int is_promotion;
 } move_t;
-
-/* Returns true if the move is a capture. */
-int is_capture(position_t *pos, move_t *move);
-
-/* Returns true if the move is en passant. */
-int is_en_passant(position_t* pos, move_t *move);
-
-/* Returns true if the move is castle. */
-int is_castle(position_t* pos, move_t* move);
 
 typedef struct {
     position_t pos; /* Current position. */
