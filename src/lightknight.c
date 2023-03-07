@@ -10,10 +10,10 @@ void write_board(position_t *pos)
     for (int rank = 7; rank >= 0; --rank) {
         for (int file = 0; file <= 7; ++file)
         {   
-            int sq64 = rank * 8 + file + 1;
+            int sq64 = rank * 8 + file;
             int color = (*pos).board[square_64_to_120(sq64)].color;
 
-            switch ((*pos).board[square_64_to_120(sq64)].piece)
+            switch (pos->board[square_64_to_120(sq64)].piece_type)
             {
                 case NOPIECE:
                     printf(". ");
@@ -62,6 +62,7 @@ void write_board(position_t *pos)
                     break;
             }
         }
+        printf("\n");
     }
 }
 
@@ -70,19 +71,19 @@ void write_pos_info(position_t *pos)
     write_board(pos);
     
     printf("Castling rights: ");
-    if ((*pos).castleK == TRUE)
+    if (pos->castleK == TRUE)
         printf("K");
     else
         printf("-");
-    if ((*pos).castleQ == TRUE)
+    if (pos->castleQ == TRUE)
         printf("Q");
     else
         printf("-");
-    if ((*pos).castlek == TRUE)
-        printf("K");
+    if (pos->castlek == TRUE)
+        printf("k");
     else
         printf("-");
-    if ((*pos).castleq == TRUE)
+    if (pos->castleq == TRUE)
         printf("q");
     else
         printf("-");
