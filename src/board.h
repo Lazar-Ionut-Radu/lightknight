@@ -56,6 +56,15 @@ int square_64_to_120(int sq64);
 /* Convert a square on a board120 to a square on a square64. */
 int square_120_to_64(int sq120);
 
+/* Returns the piece corresponding to a character. */
+piece_t char_to_piece (char piece_char);
+
+/* Sets up a position given a FEN string. */
+int fen_to_pos(position_t* pos, char *fen);
+
 /* Sets up the board */
+int init_pos(position_t* pos);
+
+/* TODO */
 
 #endif /* _BOARD_H_ */
