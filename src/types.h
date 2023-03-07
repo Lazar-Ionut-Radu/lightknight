@@ -12,11 +12,11 @@ typedef enum {
 } piece_type_t;
 
 typedef enum {
-    BLACK = -1, WHITE = 1
+    BLACK, WHITE
 } color_t;
 
 typedef struct {
-    piece_type_t piece;
+    piece_type_t piece_type;
     color_t color;
 } piece_t;
 
@@ -26,7 +26,7 @@ typedef struct {
     int castleK, castleQ; /* Castling rights for white. */
     int castlek, castleq; /* Castling rights for black. */
     int en_passant_file; /* A = 2, B = 3, ..., H = 9, not possible = 0 */
-    int num_pieces[2][6]; /* [COLOR][PIECE TYPE] */
+    int num_pieces[2][7]; /* [COLOR][PIECE TYPE] */
 } position_t;
 
 typedef struct {
